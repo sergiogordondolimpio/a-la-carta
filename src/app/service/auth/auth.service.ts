@@ -9,7 +9,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthService {
-  private host = environment.apiUrlLogin;
+  public host = environment.apiUrlLogin;
   private token: string | null =  null;
   private loggedInUsername: string | null =  null;
   private jwtHelper = new JwtHelperService();
@@ -75,7 +75,7 @@ export class AuthService {
   /**
    * isLoggedIn
    */
-  public isLoggedIn(): boolean {
+  public isUserLoggedIn(): boolean {
     this.loadToken();
     if (this.token != null && this.token !== '') {
       if (this.jwtHelper.decodeToken(this.token).sub != null || '') {
