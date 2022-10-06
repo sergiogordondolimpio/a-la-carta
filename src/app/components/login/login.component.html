@@ -1,0 +1,18 @@
+<div class="d-flex p-2 flex-column justify-content-center align-items-center vh-100">
+    <h1 class="display-4">A LA CARTA</h1>
+    <h4>Introduzca email y password</h4>
+    <div class="input-group has-validation d-flex flex-column align-items-center">
+        <div class="form-floating is-invalid w-50 mb-3">
+            <input type="mail" [ngClass]="{'form-control': true, isEmailInvalid: 'is-invalid'}" id="email-login" placeholder="Username" required>
+            <label for="email-login">Email</label>
+        </div>
+        <div class="form-floating is-invalid w-50 mb-3">
+            <input type="text" [ngClass]="{'form-control': true, isPassInvalid: 'is-invalid'}" id="pass-login" placeholder="Username" required>
+            <label for="pass-login">Password</label>
+        </div>
+        <div class="invalid-feedback">
+            {{invalidInput}}
+        </div>
+    </div>
+    
+</div>

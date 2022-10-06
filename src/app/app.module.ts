@@ -7,17 +7,24 @@ import { AppComponent } from './app.component';
 import { AuthService } from './service/auth/auth.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthGuard } from './guard/auth.guard';
+import { NotificationModule } from './notification.module';
+import { LoginComponent } from './components/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NotificationModule,
+    NgbModule
   ],
   providers: [
+    NotificationModule,
     AuthService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
