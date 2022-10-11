@@ -21,8 +21,8 @@ export class AuthService {
   /**
    * login
    */
-  public login(user: User): Observable<HttpResponse<any> | HttpErrorResponse> {
-    return this.http.post<HttpResponse<any> | HttpErrorResponse>(this.host, user, {observe: 'response'});
+  public login(user: User): Observable<any> {
+    return this.http.post<any>(this.host, user, {observe: 'response'});
   }
 
   /**
@@ -33,21 +33,22 @@ export class AuthService {
     this.loggedInUsername = null;
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    localStorage.removeItem('users');
   }
 
   /**
    * saveToken
    */
-  public saveToken(token: string): void {
+  public saveToken(token: string | null): void {
     this.token = token;
-    localStorage.setItem('token', token); 
+    if (token != null) {
+      localStorage.setItem('token', token); 
+    }
   }
 
   /**
    * addUserToLocalCache
    */
-  public addUserToLocalCache(user: User): void {
+  public addUserToLocalCache(user: User | null): void {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
@@ -63,6 +64,7 @@ export class AuthService {
    */
   public loadToken(): void {
     this.token = localStorage.getItem('token');
+    console.log('loadToken:',this.token)
   }
 
   /**

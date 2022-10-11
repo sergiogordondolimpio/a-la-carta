@@ -10,11 +10,13 @@ import { AuthGuard } from './guard/auth.guard';
 import { NotificationModule } from './notification.module';
 import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

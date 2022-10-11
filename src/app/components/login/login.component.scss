@@ -1,0 +1,15 @@
+
+.back-img {
+    background-image: var(--restaurante-hero);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-custom {
+
+    padding: 0 3rem;
+
+    @media (min-width: 1300px) {
+        padding: 0 6rem;
+    }
+}

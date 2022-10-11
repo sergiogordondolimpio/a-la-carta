@@ -1,18 +1,28 @@
-<div class="d-flex p-2 flex-column justify-content-center align-items-center vh-100">
-    <h1 class="display-4">A LA CARTA</h1>
-    <h4>Introduzca email y password</h4>
-    <div class="input-group has-validation d-flex flex-column align-items-center">
-        <div class="form-floating is-invalid w-50 mb-3">
-            <input type="mail" [ngClass]="{'form-control': true, isEmailInvalid: 'is-invalid'}" id="email-login" placeholder="Username" required>
-            <label for="email-login">Email</label>
+<div class="back-img row justify-content-center align-items-center vh-100">
+    <div class="form-custom col-10 col-md-8 col-lg-6 col-xl-5 d-flex flex-column align-items-center justify-content-center bg-dark bg-opacity-25 h-50 rounded-2">
+        <h1 class="display-4 text-light">A LA CARTA</h1>
+        <h4 class="text-light mb-5">Introduzca email y password</h4>
+        <div class="input-group has-validation">
+            <div class="form-floating is-invalid mb-3">
+                <input type="mail" [ngClass]="{'form-control opacity-75': true, isEmailInvalid: 'is-invalid'}" id="email-login" placeholder="Username" required>
+                <label for="email-login">Email</label>
+            </div>
+            <div class="invalid-feedback">
+                {{invalidInput}}
+            </div>
         </div>
-        <div class="form-floating is-invalid w-50 mb-3">
-            <input type="text" [ngClass]="{'form-control': true, isPassInvalid: 'is-invalid'}" id="pass-login" placeholder="Username" required>
-            <label for="pass-login">Password</label>
+        <div class="input-group has-validation">
+            <div class="form-floating is-invalid mb-3">
+                <input type="text" [ngClass]="{'form-control opacity-75': true, isPassInvalid: 'is-invalid'}" id="pass-login" placeholder="Username" required>
+                <label for="pass-login">Password</label>
+            </div>
+            <div class="invalid-feedback">
+                {{invalidInput}}
+            </div>
         </div>
-        <div class="invalid-feedback">
-            {{invalidInput}}
-        </div>
+        <button (click)="onLogin({
+            email: 'challenge@alkemy.org',
+            password: 'react'
+        })" type="button" class="btn btn-primary w-100 btn-lg">Log in</button>
     </div>
-    
 </div>
