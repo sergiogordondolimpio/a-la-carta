@@ -5,6 +5,7 @@ import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { NotificationService } from 'src/app/service/notification/notification.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public isEmailInvalid: boolean = false;
   public isPassInvalid: boolean = false;
   public hideLoading: boolean = false;
+  public user: User = new User ('', '');
   private subscriptions: PushSubscription[] = [];
 
   constructor(
@@ -24,6 +26,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private notifier: NotificationService
   ) { }
+
+  /* 
+    User
+    {
+      "email": "challenge@alkemy.org",
+      "password": "react"
+    }
+  */
   
   
   ngOnInit(): void {
@@ -37,16 +47,16 @@ export class LoginComponent implements OnInit, OnDestroy {
   /**
    * onLogin
    */
-  public onLogin(user: User):void {
+  public onLogin():void {
     this.hideLoading = true;
-    console.log(user);
+    console.log(this.user);
    /*  this.subscriptions.push( */
-   this.authService.login(user).subscribe(
+   this.authService.login(this.user).subscribe(
     response => {
       console.log(response)
       this.authService.saveToken(response.body.token);
       this.authService.addUserToLocalCache(response); 
-     this.router.navigateByUrl('index');
+      this.router.navigateByUrl('index');
       this.hideLoading = true;
     },
     errorResponse => {

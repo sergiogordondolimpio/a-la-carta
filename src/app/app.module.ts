@@ -11,6 +11,7 @@ import { NotificationModule } from './notification.module';
 import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IndexComponent } from './components/index/index.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { IndexComponent } from './components/index/index.component';
     AppRoutingModule,
     HttpClientModule,
     NotificationModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     NotificationModule,

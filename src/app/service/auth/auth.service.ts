@@ -56,7 +56,11 @@ export class AuthService {
    * getUserFromLocalCache
    */
   public getUserFromLocalCache(): User | null {
-    return localStorage.getItem('user');;
+    if (localStorage.getItem('user') !== null) {
+      return JSON.parse(localStorage.getItem('user')!);
+    } else {
+      return null;
+    }
   }
 
   /**
